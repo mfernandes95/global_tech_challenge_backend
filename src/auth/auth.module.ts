@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 
 import { jwtConstants } from './shared/constants';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from 'src/user/entities/user.entity';
+import { User } from '../user/entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { LocalStrategy } from './shared/local.strategy';
 

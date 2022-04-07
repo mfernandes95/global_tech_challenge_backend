@@ -9,7 +9,6 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('sessions')
   async login(@Request() req: any) {
-    console.log('userrr11111111111', req.body);
     return this.authService.login(req.body);
   }
 }
