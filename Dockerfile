@@ -1,16 +1,16 @@
-FROM node:14.15.0-alpine3.10 As development
+FROM node:lts As development
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN yarn
+RUN npm i
 
 COPY . .
 
-RUN yarn build
+RUN npm run build
 
-FROM node:14.15.0-alpine3.10 as production
+FROM node:lts as production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
@@ -19,8 +19,8 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN yarn --only=production
+RUN npm i
 
 COPY --from=development /usr/src/app/dist ./dist
 
-CMD node dist/main
+CMD node dist/src/main
