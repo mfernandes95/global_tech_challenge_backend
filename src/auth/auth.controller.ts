@@ -6,7 +6,9 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('sessions')
-  async login(@Request() req: any) {
+  async login(@Request() req: any): Promise<{
+    access_token: string;
+  }> {
     return this.authService.login(req.body);
   }
 }
