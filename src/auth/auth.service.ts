@@ -19,16 +19,16 @@ export class AuthService {
     };
   }
 
-  async validateUser(userEmail: string, userPassword: string) {
+  async validateUser(email: string, password: string) {
     const user = await this.userRepo.findOne({
-      where: { email: userEmail },
+      where: { email: email },
     });
 
-    if (!user) throw new HttpException('User not found', 404);
-
-    if (userPassword == user.password) {
-      const { id, name, email } = user;
-      return { id, name, email };
+    if (user) {
+      if (password == user.password) {
+        const { id, name, email } = user;
+        return { id, name, email };
+      }
     }
 
     return null;
