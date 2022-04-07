@@ -13,9 +13,6 @@ import { User } from './entities/user.entity';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  // @ApiCreatedResponse({
-  //   type: UserResponse,
-  // })
   @HttpCode(201)
   @Post()
   async store(
