@@ -11,10 +11,10 @@ export class UserService {
     private readonly userRepo: Repository<User>,
   ) {}
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const existingUser = await this.userRepo.findOne({
+    const userExists = await this.userRepo.findOne({
       where: { email: createUserDto.email },
     });
-    if (existingUser) {
+    if (userExists) {
       throw new HttpException('User already already exists', 400);
     }
     const user = this.userRepo.create(createUserDto);
