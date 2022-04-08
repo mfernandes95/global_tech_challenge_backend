@@ -16,7 +16,7 @@ using docker
 
 ```bash
 docker image build -t user_api:1.0.0 .
-docker container run -d -p 3000:3000 user_api:1.0.0
+docker container run -d -p 3333:3333 user_api:1.0.0
 ```
 
 ## Postman Collection
